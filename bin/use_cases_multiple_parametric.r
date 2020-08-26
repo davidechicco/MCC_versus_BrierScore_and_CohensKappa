@@ -18,11 +18,11 @@ if (length(args) < ARGS_DIM) {
   stop("At least ", ARGS_DIM," argument must be supplied (input file).n", call.=FALSE)
 } else if (length(args)==ARGS_DIM) {
 
-  this_number_of_ones <-  args[1]
-  this_number_of_zeros <- args[2]
-  thisRatioA <- args[3]
-  thisRatioB <- args[4]
-  thisRatioC <- args[5]
+  this_number_of_ones <-  as.numeric(args[1])
+  this_number_of_zeros <- as.numeric(args[2])
+  thisRatioA <- as.numeric(args[3])
+  thisRatioB <- as.numeric(args[4])
+  thisRatioC <- as.numeric(args[5])
 }
 
 print(args)
