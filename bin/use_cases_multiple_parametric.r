@@ -4,6 +4,37 @@ cat("\014")
 # set.seed(11)
 options(repos = list(CRAN="http://cran.rstudio.com/"))
 
+
+this_number_of_ones <-  NULL
+this_number_of_zeros <- NULL
+thisRatioA <- NULL
+thisRatioB <- NULL
+thisRatioC <- NULL
+
+args = commandArgs(trailingOnly=TRUE)
+ARGS_DIM <- 5
+
+if (length(args) < ARGS_DIM) {
+  stop("At least ", ARGS_DIM," argument must be supplied (input file).n", call.=FALSE)
+} else if (length(args)==ARGS_DIM) {
+
+  this_number_of_ones <-  args[1]
+  this_number_of_zeros <- args[2]
+  thisRatioA <- args[3]
+  thisRatioB <- args[4]
+  thisRatioC <- args[5]
+}
+
+print(args)
+
+cat("this_number_of_ones: ", this_number_of_ones, "\n")
+cat("this_number_of_zeros: ", this_number_of_zeros, "\n")
+cat("thisRatioA: ", thisRatioA, "\n")
+cat("thisRatioB: ", thisRatioB, "\n")
+cat("thisRatioC: ", thisRatioC, "\n\n\n")
+
+
+
 list.of.packages <- c("easypackages", "ggplot2", "lubridate")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
@@ -67,13 +98,11 @@ rates_computator <- function(ratio1stChunk, ratio2ndChunk, ratio3rdChunk, shapeA
 # this_number_of_ones <-  1000 
 # this_number_of_zeros <- 10000
 
-this_number_of_ones <-  1000
-this_number_of_zeros <- 100
-
-
-thisRatioA <- 0.3
-thisRatioB <- 0.7
-thisRatioC <- 1
+# this_number_of_ones <-  1000
+# this_number_of_zeros <- 100
+# thisRatioA <- 0.3
+# thisRatioB <- 0.7
+# thisRatioC <- 1
 
 
 thisKeyword <- "test aaa00"
