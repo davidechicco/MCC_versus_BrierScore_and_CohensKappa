@@ -1,0 +1,47 @@
+0.7   0.3   1 
+thisShapeA1, thisShapeA2, thisShapeB1,  thisShapeB2, thisShapeC1, thisShapeC2:
+9   15   9   15   12   7 
+Imbalance of the dataset:
+  positive percentage 50.00%
+  negative percentage 50.00%
+
+ K 	            BS 	 binBS 	 MCC 	 normMCC  1-BS
+-0.870 	 0.397 	 0.935 	 -0.870 	 0.065 	       0.603 
+ difference between normMCC and complBS: 0.538 
+High difference between normMCC and complBS: 0.538 	************** $TOP$
+--
+ratio1stChunk, ratio2ndChunk, ratio3rdChunk:
+0.7   0.3   1 
+thisShapeA1, thisShapeA2, thisShapeB1,  thisShapeB2, thisShapeC1, thisShapeC2:
+3   8   6   15   15   7 
+Imbalance of the dataset:
+  positive percentage 9.09%
+  negative percentage 90.91%
+
+ K 	 BS 	 binBS 	 MCC 	 normMCC  1-BS
+-0.187 	 0.478 	 0.975 	 -0.865 	 0.067 	 0.522 
+ difference between normMCC and complBS: 0.455          $TOP$
+--
+ratio1stChunk, ratio2ndChunk, ratio3rdChunk:
+0.7   0.3   1 
+thisShapeA1, thisShapeA2, thisShapeB1,  thisShapeB2, thisShapeC1, thisShapeC2:
+7   15   8   14   15   8 
+Imbalance of the dataset:
+  positive percentage 9.09%
+  negative percentage 90.91%
+
+ K 	 BS 	 binBS 	 MCC 	 normMCC  1-BS
+-0.190 	 0.439 	 0.955 	 -0.787 	 0.107 	 0.561 
+ difference between normMCC and complBS: 0.455      $TOP$
+--
+ratio1stChunk, ratio2ndChunk, ratio3rdChunk:
+0.7   0.3   1 
+thisShapeA1, thisShapeA2, thisShapeB1,  thisShapeB2, thisShapeC1, thisShapeC2:
+7   15   7   15   14   6 
+Imbalance of the dataset:
+  positive percentage 90.91%
+  negative percentage 9.09%
+
+ K 	 BS 	 binBS 	 MCC 	 normMCC  1-BS
+-0.193 	 0.475 	 0.974 	 -0.863 	 0.068 	 0.525 
+ difference between normMCC and complBS: 0.457          $TOP$
