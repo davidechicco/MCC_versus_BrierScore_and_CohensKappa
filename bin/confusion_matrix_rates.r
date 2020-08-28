@@ -89,13 +89,13 @@ confusion_matrix_rates <- function (actual_labels, predicted_values, keyword)
   FP <- sum(actual == 0 & predicted == 1)
   FN <- sum(actual == 1 & predicted == 0)
   
-#   cat("\nTOTAL:\n\n")
-#   cat(" FN = ", (FN), " / ", (FN+TP), "\t (truth == 1) & (prediction < threshold)\n");
-#   cat(" TP = ", (TP), " / ", (FN+TP),"\t (truth == 1) & (prediction >= threshold)\n\n");
-# 	
-# 
-#   cat(" FP = ", (FP), " / ", (FP+TN), "\t (truth == 0) & (prediction >= threshold)\n");
-#   cat(" TN = ", (TN), " / ", (FP+TN), "\t (truth == 0) & (prediction < threshold)\n\n");
+  cat("\nTOTAL:\n\n")
+  cat(" FN = ", (FN), " / ", (FN+TP), "\t (truth == 1) & (prediction < threshold)\n");
+  cat(" TP = ", (TP), " / ", (FN+TP),"\t (truth == 1) & (prediction >= threshold)\n\n");
+	
+
+  cat(" FP = ", (FP), " / ", (FP+TN), "\t (truth == 0) & (prediction >= threshold)\n");
+  cat(" TN = ", (TN), " / ", (FP+TN), "\t (truth == 0) & (prediction < threshold)\n\n");
   
   sum1 <- TP+FP; sum2 <-TP+FN ; sum3 <-TN+FP ; sum4 <- TN+FN;
   denom <- as.double(sum1)*sum2*sum3*sum4 # as.double to avoid overflow error on large products
@@ -135,17 +135,17 @@ confusion_matrix_rates <- function (actual_labels, predicted_values, keyword)
   cat(dec_three(normMCC), " \t ",  sep="")
   cat(dec_three(complBrieScore), " \n ",  sep="")
   
-#   cat("\n\n",keyword,"\tMCC \t F1_score \taccuracy \tTP_rate \tTN_rate \tPPV \t\tNPV \t\tPR AUC \tROC AUC\n")
-#   cat(keyword,"      ", sep="")
-#   cat(dec_three(thisMcc), " \t ",  sep="")
-#   cat(dec_three(f1_score), " \t \t",  sep="")
-#   cat(dec_three(accuracy), " \t \t",  sep="")
-#   cat(dec_three(recall), " \t \t",  sep="")
-#   cat(dec_three(specificity),  "\t\t",  sep="")
-#   cat(dec_three(PPV), "\t \t",  sep="")
-#   cat(dec_three(NPV),  "\t \t",  sep="")
-#   cat(dec_three(prc_auc), "\t",  sep="")
-#   cat(dec_three(roc_auc), sep="",  "\n\n")
+# #   cat("\n\n",keyword,"\tMCC \t F1_score \taccuracy \tTP_rate \tTN_rate \tPPV \t\tNPV \t\tPR AUC \tROC AUC\n")
+# #   cat(keyword,"      ", sep="")
+# #   cat(dec_three(thisMcc), " \t ",  sep="")
+# #   cat(dec_three(f1_score), " \t \t",  sep="")
+# #   cat(dec_three(accuracy), " \t \t",  sep="")
+# #   cat(dec_three(recall), " \t \t",  sep="")
+# #   cat(dec_three(specificity),  "\t\t",  sep="")
+# #   cat(dec_three(PPV), "\t \t",  sep="")
+# #   cat(dec_three(NPV),  "\t \t",  sep="")
+# #   cat(dec_three(prc_auc), "\t",  sep="")
+# #   cat(dec_three(roc_auc), sep="",  "\n\n")
  
   #  resultsList <- list("MCC" = thisMcc, "F1 score" = f1_score, "accuracy" = accuracy, "TP rate" = recall, "TN rate" = specificity, "PR AUC" = prc_auc, "ROC AUC" = roc_auc)
 

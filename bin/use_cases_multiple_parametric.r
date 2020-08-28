@@ -1,7 +1,7 @@
 setwd(".")
 options(stringsAsFactors = FALSE)
 cat("\014")
-# set.seed(11)
+set.seed(11)
 options(repos = list(CRAN="http://cran.rstudio.com/"))
 
 
@@ -35,7 +35,7 @@ cat("thisRatioC: ", thisRatioC, "\n\n\n")
 
 
 
-list.of.packages <- c("easypackages", "ggplot2", "lubridate")
+list.of.packages <- c("easypackages",  "lubridate")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 
