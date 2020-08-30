@@ -68,13 +68,6 @@ rates_computator <- function(ratio1stChunk, ratio2ndChunk, ratio3rdChunk, shapeA
   positive_perc <- number_of_ones * 100 / (number_of_ones + number_of_zeros)
   negative_perc <- number_of_zeros * 100 / (number_of_ones + number_of_zeros)
 
-  if(global_print == 0) {
-    cat("Imbalance of the dataset:\n")
-    cat("  positive percentage ", dec_two(positive_perc), "%\n", sep="")
-    cat("  negative percentage ", dec_two(negative_perc), "%\n\n", sep="")
-    global_print <- global_print + 1
-  }
-
   num_observations_1st_chunk <- round(ratio1stChunk * number_of_ones)
   num_observations_2nd_chunk <- round(ratio2ndChunk * number_of_ones)
   num_observations_3rd_chunk <- round(ratio3rdChunk * number_of_zeros)
@@ -87,9 +80,9 @@ rates_computator <- function(ratio1stChunk, ratio2ndChunk, ratio3rdChunk, shapeA
   cf_output <- confusion_matrix_rates(response, predictor, " ")
   
   diff_BS_MCC <- abs(as.data.frame(cf_output)$"normMCC" - as.data.frame(cf_output)$"complBS")
-  cat("difference between normMCC and complBS:", dec_three(diff_BS_MCC),"\n")
+  cat("normMCC and complBS = delta =", dec_three(diff_BS_MCC),"\n")
   
-  if(diff_BS_MCC >= 0.5) cat("High difference between normMCC and complBS:", dec_three(diff_BS_MCC), "\t**************\n")
+  # if(diff_BS_MCC >= 0.5) cat("High difference between normMCC and complBS:", dec_three(diff_BS_MCC), "\t**************\n")
 
 }
 
@@ -109,15 +102,24 @@ thisKeyword <- "test aaa00"
 
 upper_limit <- 15
 
-# for(thisShapeA1 in 1:15)  for(thisShapeA2 in 1:15)  for(thisShapeB1 in 1:15) for(thisShapeB2 in 1:15) for(thisShapeC1 in 1:15)  for(thisShapeC2 in 1:15)  rates_computator(thisRatioA, thisRatioB, thisRatioC, thisShapeA1, thisShapeA2, thisShapeB1,  thisShapeB2, thisShapeC1, thisShapeC2, this_number_of_ones, this_number_of_zeros, thisKeyword)
+this_response <- c(rep(ONE, this_number_of_ones), rep(ZERO, this_number_of_zeros))
+
+this_positive_perc <- this_number_of_ones * 100 / (this_number_of_ones + this_number_of_zeros)
+this_negative_perc <- this_number_of_zeros * 100 / (this_number_of_ones + this_number_of_zeros)
+
+cat("Imbalance of the dataset:\n")
+cat("  positive percentage ", dec_two(this_positive_perc), "%\n", sep="")
+cat("  negative percentage ", dec_two(this_negative_perc), "%\n\n", sep="")
 
 count <- 1
 
 for(thisShapeA1 in 1:upper_limit)  for(thisShapeA2 in 1:upper_limit)  for(thisShapeB1 in 1:upper_limit) for(thisShapeB2 in 1:upper_limit) for(thisShapeC1 in 1:upper_limit)  for(thisShapeC2 in 1:upper_limit) {
     
     completedPerc <- dec_three((count*100) / (upper_limit^6))
-    cat("\ncompleted: ", completedPerc, "%\n")
+    cat("\ncompleted: ", completedPerc, "%\n", sep="")
     
     rates_computator(thisRatioA, thisRatioB, thisRatioC, thisShapeA1, thisShapeA2, thisShapeB1,  thisShapeB2, thisShapeC1, thisShapeC2, this_number_of_ones, this_number_of_zeros, thisKeyword)
     count <- count + 1
 }
+
+computeExecutionTime()
