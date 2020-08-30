@@ -7,7 +7,10 @@
 # In[ ]:
 
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
+
+import matplotlib
+from matplotlib import pyplot as plt
 
 from random import seed
 from random import randint
@@ -56,15 +59,28 @@ cohens_kappa = kappa_upper / kappa_lower
 
 # plotting
 
+mySize = 0.2
+myColor = "black"
+
 # In[ ]:
-plt.scatter(MCC, cohens_kappa)
+
+matplotlib.rc('axes', edgecolor='white')
+
+
+plt.rcParams['axes.axisbelow'] = True
+
+plt.rcParams['axes.facecolor'] = 'whitesmoke'
+plt.grid(color='white')
+plt.scatter(MCC, cohens_kappa, s=mySize, c=myColor)
 plt.xlabel('Matthews correlation coefficient (MCC)')
 plt.ylabel('Cohen\'s Kappa')
-plt.grid()
+
+
+
 # plt.show()
 
 value = randint(1, 1000)
 
-fileName = 'MCC_vs_CohensKappa_python_rand'+str(value)+'.png' 
+fileName = '../plots/MCC_vs_CohensKappa_python_rand'+str(value)+'.pdf' 
 plt.savefig(fileName)
 
