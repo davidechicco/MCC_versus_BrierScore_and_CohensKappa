@@ -22,6 +22,8 @@ stepsize = 0.01
 vals = np.arange(0, 1. + stepsize, stepsize)
 N = len(vals) - 1
 
+print("Number of values considered", N, "\n")
+
 # In[ ]:
 TP = []
 TN = []
@@ -82,5 +84,5 @@ plt.ylabel('Cohen\'s Kappa')
 value = randint(1, 1000)
 
 fileName = '../plots/MCC_vs_CohensKappa_python_rand'+str(value)+'.pdf' 
-plt.savefig(fileName)
+# plt.savefig(fileName)
 
