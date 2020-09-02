@@ -1,7 +1,23 @@
 setwd(".")
 options(stringsAsFactors = FALSE)
 cat("\014")
-# set.seed(11)
+set.seed(11)
+
+input_file_name <- NULL
+
+args = commandArgs(trailingOnly=TRUE)
+ARGS_DIM <- 1
+
+
+if (length(args) < ARGS_DIM) {
+  stop("At least ", ARGS_DIM," argument must be supplied (input file).n", call.=FALSE)
+} else if (length(args)==ARGS_DIM) {
+
+  input_file_name <-  toString(args[1])
+}
+
+SAVE_GENERAL_PLOT <- TRUE
+
 
 list.of.packages <- c("easypackages", "ggplot2")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
@@ -13,15 +29,42 @@ libraries(list.of.packages)
 #source("./confusion_matrix_rates.r")
 source("./utils.r")
 
-fileName <- "../results/pos_imb_1879_only_values.csv"
-myPlotTitle <- "positively imbalanced dataset"
-tag <- "pos_imb"
+fileName <- input_file_name
+myPlotTitle <- NULL
+tag <- NULL
 
-# fileName <- "../results/balanced_1879_only_values.csv"
+
+if(grepl("pos_imb", fileName)) {
+
+	myPlotTitle <- "positively imbalanced dataset"
+	tag <- "pos_imb"
+}
+
+if(grepl("bal", fileName)) {
+
+        myPlotTitle <- "balanced dataset"
+        tag <- "bal"
+}
+
+if(grepl("neg_imb", fileName)) {
+
+        myPlotTitle <- "negatively imbalanced dataset"
+        tag <- "neg_imb"
+}
+
+cat("fileName: ", fileName, "\n", sep="")
+cat("myPlotTitle: ", myPlotTitle, "\n", sep="")
+cat("tag: ", tag, "\n\n", sep="")
+
+# fileName <- "../results/pos_imb_8189_only_values.csv"
+# myPlotTitle <- "positively imbalanced dataset"
+# tag <- "pos_imb"
+
+# fileName <- "../results/balanced_8189_only_values.csv"
 # myPlotTitle <- "balanced dataset"
 # tag <- "bal"
 
-# fileName <- "../results/neg_imb_1879_only_values.csv"
+# fileName <- "../results/neg_imb_8189_only_values.csv"
 # myPlotTitle <- "negatively imbalanced dataset"
 # tag <- "neg_imb"
 
@@ -37,9 +80,9 @@ for(i in 1:loop_num) {
     values_data_original <- values_data_original[sample(nrow(values_data_original)),]
 
     # let's plot first a subset of the points
-    LIM <-100000
-    values_data <- values_data_original[1:LIM,]
-
+    # LIM <-200000
+    # values_data <- values_data_original[1:LIM,]
+    values_data <- values_data_original
 
     colnames(values_data) <- c("K",  "BS",  "binBS",  "MCC",  "normMCC",  "complBS")
     
@@ -66,7 +109,6 @@ for(i in 1:loop_num) {
     test_title <- "normMCC_versus_complBS"
 
     general_file <- paste("../plots/", tag, "_", test_title, "_rand", exe_num,  ".png", sep="")
-    SAVE_GENERAL_PLOT <- TRUE
         
     if (SAVE_GENERAL_PLOT) {
         ggsave(p, file=general_file, height = plot_height, width = plot_width, units = "cm", dpi = 150)
