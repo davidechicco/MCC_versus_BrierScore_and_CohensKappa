@@ -5,5 +5,5 @@ To run the scripts and generate the MCC / Brier score use cases:
 
 `Rscript use_cases_multiple.r`
 
-## Contacts
-For information or enquires, please contact Davide Chicco at davidechicco(AT)davidechicco.it
+### Contacts
+For any enquire, please write to [Davide Chicco](https://www.davidechicco.it) (Krembil Research Institute) at [davidechicco(AT)davidechicco.it](mailto:davidechicco@davidechicco.it)
